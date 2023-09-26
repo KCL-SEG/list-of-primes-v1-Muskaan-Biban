@@ -3,14 +3,20 @@
 
 def primes(number_of_primes):
     list = []
-    if number_of_primes >= 1:
-        list.append(2)
-        if number_of_primes >= 2:
-            list.append(3)
-    number = 4
-    while len(list) > number_of_primes:
-        list.append(number)
-        number =+ 1
+    count = 0
+    while len(list) < number_of_primes:
+        if count == 0 or count == 1:
+            count += 1
+            continue
+        else:
+            for j in range(2, int(count/2) + 1):
+                if count % j == 0:
+                    count += 1
+                    break
+            else:
+                list.append(count)
+                count += 1
+    print(list)
     return list
 
-primes(10)
+primes(20)
